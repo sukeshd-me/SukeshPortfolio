@@ -38,10 +38,10 @@ export class SystemMonitor {
             minute: '2-digit',
             second: '2-digit'
           });
-          this.clockElement.textContent = `${istTime} IST`;
+          this.clockElement.textContent = istTime;
         } else {
           const utcTime = now.toISOString().slice(11, 19);
-          this.clockElement.textContent = `${utcTime} UTC`;
+          this.clockElement.textContent = utcTime;
         }
       }
 
