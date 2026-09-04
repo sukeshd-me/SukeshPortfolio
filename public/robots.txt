@@ -1,0 +1,7 @@
+# Robots.txt for Sukesh D Portfolio
+# https://www.sukeshportfolio.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.sukeshportfolio.com/sitemap.xml

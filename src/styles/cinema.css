@@ -1,0 +1,121 @@
+/* ==========================================================================
+   CINEMA MODE STYLES
+   Immersive, expanded storytelling experience with dimmed interface chrome
+   ========================================================================== */
+
+body.cinema-mode {
+  overflow-x: hidden;
+}
+
+body.cinema-mode .os-topbar {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s var(--ease-out-cubic), opacity 0.3s ease;
+}
+
+body.cinema-mode .os-sidebar {
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s var(--ease-out-cubic), opacity 0.3s ease;
+}
+
+body.cinema-mode .os-main {
+  margin-left: 0 !important;
+  padding-top: var(--space-8);
+  max-width: 1180px;
+  margin-inline: auto;
+  transition: margin 0.4s var(--ease-out-cubic), padding 0.4s var(--ease-out-cubic);
+}
+
+/* Cinema Mode floating exit pill */
+.cinema-exit-pill {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: var(--z-modal);
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-primary);
+  background: rgba(13, 21, 38, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border-accent);
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.2);
+  cursor: pointer;
+  transition: background var(--transition-base), transform var(--transition-fast), border-color var(--transition-base);
+}
+
+body.cinema-mode .cinema-exit-pill {
+  display: inline-flex;
+  animation: cinemaPillFadeIn 0.5s var(--ease-out-cubic) forwards;
+}
+
+@keyframes cinemaPillFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cinema-exit-pill:hover {
+  background: rgba(30, 58, 138, 0.7);
+  border-color: var(--color-blue-400);
+  transform: translateY(-2px);
+}
+
+.cinema-exit-pill kbd {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Cinema Mode visual enhancements */
+body.cinema-mode .hero-section {
+  min-height: 85vh;
+  justify-content: center;
+}
+
+body.cinema-mode .hero-headline {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: -0.04em;
+}
+
+body.cinema-mode .section-container {
+  padding-block: var(--space-20);
+}
+
+body.cinema-mode .os-card {
+  background: rgba(13, 22, 40, 0.82);
+  border-color: rgba(59, 130, 246, 0.22);
+}
+
+/* Subtle cinematic vignette layer */
+body.cinema-mode::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle at center, transparent 65%, rgba(4, 7, 13, 0.55) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.cinema-mode .os-topbar,
+  body.cinema-mode .os-sidebar,
+  body.cinema-mode .os-main {
+    transition: none !important;
+  }
+}

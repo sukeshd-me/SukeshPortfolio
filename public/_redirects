@@ -1,0 +1,3 @@
+# Cloudflare Pages Redirects
+/home    /    301
+/github  https://github.com/sukeshd-me  302

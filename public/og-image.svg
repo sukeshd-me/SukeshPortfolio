@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070b14"/>
+      <stop offset="40%" stop-color="#0b1329"/>
+      <stop offset="100%" stop-color="#050811"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111c38" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0b1329" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+
+  <!-- Subtle OS Grid Pattern -->
+  <g stroke="#1e293b" stroke-width="1" opacity="0.35">
+    <line x1="0" y1="126" x2="1200" y2="126" />
+    <line x1="0" y1="252" x2="1200" y2="252" />
+    <line x1="0" y1="378" x2="1200" y2="378" />
+    <line x1="0" y1="504" x2="1200" y2="504" />
+    <line x1="240" y1="0" x2="240" y2="630" />
+    <line x1="480" y1="0" x2="480" y2="630" />
+    <line x1="720" y1="0" x2="720" y2="630" />
+    <line x1="960" y1="0" x2="960" y2="630" />
+  </g>
+
+  <!-- Glowing Abstract Sphere / Shield Aura -->
+  <circle cx="950" cy="315" r="220" fill="#2563eb" opacity="0.12" filter="blur(60px)"/>
+  <circle cx="950" cy="315" r="140" fill="#06b6d4" opacity="0.08" filter="blur(40px)"/>
+
+  <!-- Left Main Card -->
+  <rect x="80" y="80" width="700" height="470" rx="24" fill="url(#cardGrad)" stroke="#1e293b" stroke-width="1.5" />
+  
+  <!-- OS Header Bar inside card -->
+  <rect x="80" y="80" width="700" height="52" rx="24" fill="#0f172a" opacity="0.6"/>
+  <circle cx="115" cy="106" r="6" fill="#ef4444" opacity="0.8"/>
+  <circle cx="135" cy="106" r="6" fill="#f59e0b" opacity="0.8"/>
+  <circle cx="155" cy="106" r="6" fill="#10b981" opacity="0.8"/>
+  <text x="185" y="111" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" letter-spacing="1.5">S//SECURITY OS &bull; KERNEL v2.4</text>
+
+  <!-- Monogram S Badge in Card -->
+  <rect x="120" y="165" width="64" height="64" rx="16" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+  <path d="M162 181 H144 C139 181 135 185 135 190 C135 195 139 199 144 199 H160 C165 199 169 203 169 208 C169 213 165 217 160 217 H140" 
+        fill="none" stroke="url(#accent)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Identity Text -->
+  <text x="204" y="195" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" letter-spacing="2">DEVELOPER &times; CYBERSECURITY</text>
+  <text x="204" y="222" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16">Cuddalore, Tamil Nadu, India</text>
+
+  <!-- Primary Headline -->
+  <text x="120" y="300" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="56" font-weight="800" letter-spacing="-1">Sukesh D</text>
+  <text x="120" y="352" fill="#93c5fd" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="26" font-weight="600">Aspiring Cybersecurity Professional</text>
+
+  <!-- Description quote -->
+  <text x="120" y="415" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-style="italic">
+    "Building software, exploring cybersecurity, and learning how systems can be made safer."
+  </text>
+
+  <!-- Tag Pills -->
+  <g transform="translate(120, 460)">
+    <rect x="0" y="0" width="110" height="34" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="14" y="22" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Python</text>
+
+    <rect x="122" y="0" width="130" height="34" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="136" y="22" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Web Security</text>
+
+    <rect x="264" y="0" width="150" height="34" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="278" y="22" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Network Security</text>
+
+    <rect x="426" y="0" width="105" height="34" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="440" y="22" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Linux</text>
+  </g>
+
+  <!-- Right Geometric 3D Node Graphic -->
+  <g transform="translate(950, 315)">
+    <!-- Concentric Rings -->
+    <circle cx="0" cy="0" r="160" fill="none" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="6 6"/>
+    <circle cx="0" cy="0" r="110" fill="none" stroke="#2563eb" stroke-width="2" stroke-opacity="0.4"/>
+    <circle cx="0" cy="0" r="60" fill="#0b1329" stroke="#38bdf8" stroke-width="2"/>
+
+    <!-- Center Icon -->
+    <text x="-12" y="12" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="900">S</text>
+
+    <!-- Orbital Nodes -->
+    <g transform="rotate(25)">
+      <line x1="0" y1="0" x2="110" y2="0" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.5"/>
+      <circle cx="110" cy="0" r="8" fill="#38bdf8"/>
+    </g>
+    <g transform="rotate(145)">
+      <line x1="0" y1="0" x2="110" y2="0" stroke="#3b82f6" stroke-width="1" stroke-opacity="0.5"/>
+      <circle cx="110" cy="0" r="6" fill="#3b82f6"/>
+    </g>
+    <g transform="rotate(265)">
+      <line x1="0" y1="0" x2="160" y2="0" stroke="#06b6d4" stroke-width="1" stroke-opacity="0.5"/>
+      <circle cx="160" cy="0" r="7" fill="#06b6d4"/>
+    </g>
+  </g>
+
+  <!-- Footer link -->
+  <text x="120" y="600" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="500">www.sukeshportfolio.com &bull; github.com/sukeshd-me</text>
+</svg>
