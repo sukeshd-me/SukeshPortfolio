@@ -91,8 +91,8 @@ All social links on this portfolio correspond to verified public handles:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/sukeshd-me/sukesh-portfolio.git
-   cd sukesh-portfolio
+   git clone https://github.com/sukeshd-me/SukeshPortfolio.git
+   cd SukeshPortfolio
    ```
 
 2. **Install dependencies**:
@@ -126,7 +126,7 @@ This repository is pre-configured for instant zero-configuration deployment to *
 ### Step 1: Connect Repository to Cloudflare
 1. Log in to your [Cloudflare Dashboard](https://dash.cloudflare.com/).
 2. Navigate to **Compute (Workers & Pages)** > **Create application** > **Pages** > **Connect to Git**.
-3. Select your GitHub repository: `sukeshd-me/sukesh-portfolio`.
+3. Select your GitHub repository: `sukeshd-me/SukeshPortfolio`.
 
 ### Step 2: Configure Build Settings
 In the Cloudflare Pages deployment configuration dialog, specify:
