@@ -216,9 +216,9 @@ export const PORTFOLIO_DATA = {
       number: 'PROJECT #01',
       title: 'SentinelScan',
       subtitle: 'File Safety & Malware Analysis Platform',
-      status: 'Building / In Progress',
+      status: 'Open Source • In Progress',
       badgeClass: 'status-progress',
-      description: 'A security-focused software project currently in active development. SentinelScan is designed to evaluate uploaded files through static analysis, hash computation, structural header inspection, and heuristics to flag anomalies without executing untrusted binaries.',
+      description: 'SentinelScan — File Safety & Malware Analysis Platform. Real open-source static analysis and defensive cybersecurity platform. Designed to evaluate uploaded files through static analysis, cryptographic hash computation, structural header inspection, and heuristics to identify suspicious markers without executing untrusted binaries.',
       technologies: ['Python', 'JavaScript', 'Linux', 'SHA-256 / MD5', 'MIME Heuristics'],
       architecture: [
         'Client-side file hash generator (avoids premature transmission of untrusted payloads)',
@@ -230,7 +230,8 @@ export const PORTFOLIO_DATA = {
         'Payload size constraints and rate limiting to prevent denial of service',
         'Explicit memory cleanup to prevent resource depletion during static analysis'
       ],
-      repoUrl: 'https://github.com/sukeshd-me',
+      repoUrl: 'https://github.com/sukeshd-me/SentinelScan',
+      repoName: 'sukeshd-me/SentinelScan',
       isRealData: true
     }
   ],

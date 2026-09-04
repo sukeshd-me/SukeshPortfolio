@@ -1249,6 +1249,28 @@
   color: var(--text-dim);
 }
 
+.repo-badge-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--cyan-light);
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.repo-badge-link:hover {
+  background: rgba(34, 211, 238, 0.18);
+  border-color: var(--cyan-light);
+  box-shadow: 0 0 14px var(--cyan-glow);
+  color: #fff;
+}
+
 .project-body-grid {
   display: grid;
   grid-template-columns: 1.25fr 1fr;
