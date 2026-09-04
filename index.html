@@ -155,94 +155,91 @@
     Exit Cinema Mode <kbd>Esc</kbd>
   </button>
 
-  <!-- Top System Bar -->
-  <header class="os-topbar" role="banner">
-    <div class="topbar-left">
-      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="os-sidebar">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-      <a href="#overview" class="topbar-brand" aria-label="S Security OS Homepage">
+  <!-- Floating Glass Top Navigation Bar -->
+  <header class="top-nav-bar" id="top-nav-bar" role="banner">
+    <div class="top-nav-inner">
+      <!-- Brand Logo -->
+      <a href="#overview" class="topbar-brand" aria-label="Sukesh D Portfolio Homepage">
         <span class="brand-monogram">S</span>
-        <span class="brand-name">S//SECURITY OS</span>
+        <div class="brand-meta">
+          <span class="brand-name">Sukesh D</span>
+          <span class="brand-role">Developer × Cyber</span>
+        </div>
       </a>
-      <div class="topbar-chip hidden-mobile">
-        <span class="status-dot online"></span>
-        <span class="chip-text">SYS: NORMAL</span>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-links-desktop" aria-label="Main Navigation">
+        <a href="#overview" class="top-nav-link active" data-section="overview">Overview</a>
+        <a href="#about" class="top-nav-link" data-section="about">About</a>
+        <a href="#developer" class="top-nav-link" data-section="developer">Developer</a>
+        <a href="#cybersecurity" class="top-nav-link" data-section="cybersecurity">Cybersecurity</a>
+        <a href="#skills" class="top-nav-link" data-section="skills">Skills</a>
+        <a href="#projects" class="top-nav-link" data-section="projects">Projects</a>
+        <a href="#security-lab" class="top-nav-link" data-section="security-lab">Security Lab</a>
+        <a href="#certifications" class="top-nav-link" data-section="certifications">Certifications</a>
+        <a href="#contact" class="top-nav-link" data-section="contact">Contact</a>
+      </nav>
+
+      <!-- Utility Actions -->
+      <div class="topbar-right">
+        <button class="topbar-action-btn" id="cmd-palette-btn" title="Open Command Palette (Ctrl+K / ⌘K)" aria-label="Open Command Palette">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span class="kbd-badge hidden-mobile">Ctrl + K</span>
+        </button>
+
+        <button class="topbar-action-btn hidden-mobile" id="cinema-toggle-btn" title="Toggle Cinema Mode" aria-label="Toggle Cinema Mode">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          <span>Cinema</span>
+        </button>
+
+        <a href="#contact" class="topbar-action-btn primary-action" aria-label="Contact Sukesh D">
+          <span>Connect</span>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        </button>
       </div>
-    </div>
-
-    <div class="topbar-center hidden-mobile">
-      <div class="system-clock-wrap">
-        <span class="clock-label">TIME</span>
-        <span class="system-clock" id="system-clock">--:--:--</span>
-        <span class="clock-tz">IST / UTC</span>
-      </div>
-    </div>
-
-    <div class="topbar-right">
-      <button class="topbar-action-btn" id="cmd-palette-btn" title="Open Command Palette (Ctrl+K / ⌘K)" aria-label="Open Command Palette">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <span class="kbd-badge hidden-mobile">Ctrl + K</span>
-      </button>
-
-      <button class="topbar-action-btn" id="cinema-toggle-btn" title="Toggle Cinema Mode" aria-label="Toggle Cinema Mode">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-        <span class="hidden-mobile">Cinema</span>
-      </button>
-
-      <a href="#contact" class="topbar-action-btn primary-action" aria-label="Contact Sukesh D">
-        <span>Connect</span>
-      </a>
     </div>
   </header>
 
-  <!-- Left OS Sidebar Navigation -->
-  <aside class="os-sidebar" id="os-sidebar" aria-label="Operating System Navigation">
-    <div class="sidebar-header">
-      <div class="profile-summary-card">
-        <div class="profile-avatar-slot">
-          <span class="profile-monogram">S</span>
-        </div>
-        <div class="profile-summary-meta">
-          <div class="profile-name">Sukesh D</div>
-          <div class="profile-role">Aspiring Cybersecurity Professional</div>
-          <div class="profile-location">Cuddalore, India</div>
+  <!-- Mobile Full-Screen Glass Drawer Navigation -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <div class="mobile-drawer-brand">
+        <span class="brand-monogram">S</span>
+        <div>
+          <div class="brand-name">Sukesh D</div>
+          <div class="brand-role">Aspiring Cybersecurity Professional</div>
         </div>
       </div>
+      <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close navigation menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
     </div>
-
-    <nav class="sidebar-nav" aria-label="OS Module Directory">
-      <ul class="nav-list" role="list">
-        <li><a href="#overview" class="nav-item active" data-section="overview"><span class="nav-num">01</span><span class="nav-label">Overview</span></a></li>
-        <li><a href="#about" class="nav-item" data-section="about"><span class="nav-num">02</span><span class="nav-label">About</span></a></li>
-        <li><a href="#developer" class="nav-item" data-section="developer"><span class="nav-num">03</span><span class="nav-label">Developer</span></a></li>
-        <li><a href="#cybersecurity" class="nav-item" data-section="cybersecurity"><span class="nav-num">04</span><span class="nav-label">Cybersecurity</span></a></li>
-        <li><a href="#skills" class="nav-item" data-section="skills"><span class="nav-num">05</span><span class="nav-label">Skills</span></a></li>
-        <li><a href="#projects" class="nav-item" data-section="projects"><span class="nav-num">06</span><span class="nav-label">Project Explorer</span></a></li>
-        <li><a href="#security-lab" class="nav-item" data-section="security-lab"><span class="nav-num">07</span><span class="nav-label">Security Lab</span></a></li>
-        <li><a href="#certifications" class="nav-item" data-section="certifications"><span class="nav-num">08</span><span class="nav-label">Certifications</span></a></li>
-        <li><a href="#research" class="nav-item" data-section="research"><span class="nav-num">09</span><span class="nav-label">Research</span></a></li>
-        <li><a href="#writeups" class="nav-item" data-section="writeups"><span class="nav-num">10</span><span class="nav-label">Write-ups</span></a></li>
-        <li><a href="#github" class="nav-item" data-section="github"><span class="nav-num">11</span><span class="nav-label">GitHub</span></a></li>
-        <li><a href="#contact" class="nav-item" data-section="contact"><span class="nav-num">12</span><span class="nav-label">Contact</span></a></li>
-        <li><a href="#system" class="nav-item" data-section="system"><span class="nav-num">13</span><span class="nav-label">System</span></a></li>
-        <li><a href="#about-site" class="nav-item" data-section="about-site"><span class="nav-num">14</span><span class="nav-label">About This Site</span></a></li>
-      </ul>
+    <nav class="mobile-nav-links">
+      <a href="#overview" class="mobile-nav-link" data-section="overview"><span class="m-num">01</span><span class="m-lbl">Overview</span></a>
+      <a href="#about" class="mobile-nav-link" data-section="about"><span class="m-num">02</span><span class="m-lbl">About</span></a>
+      <a href="#developer" class="mobile-nav-link" data-section="developer"><span class="m-num">03</span><span class="m-lbl">Developer System Map</span></a>
+      <a href="#cybersecurity" class="mobile-nav-link" data-section="cybersecurity"><span class="m-num">04</span><span class="m-lbl">Cybersecurity</span></a>
+      <a href="#skills" class="mobile-nav-link" data-section="skills"><span class="m-num">05</span><span class="m-lbl">Skills Matrix</span></a>
+      <a href="#projects" class="mobile-nav-link" data-section="projects"><span class="m-num">06</span><span class="m-lbl">Project Explorer</span></a>
+      <a href="#security-lab" class="mobile-nav-link" data-section="security-lab"><span class="m-num">07</span><span class="m-lbl">Security Lab</span></a>
+      <a href="#certifications" class="mobile-nav-link" data-section="certifications"><span class="m-num">08</span><span class="m-lbl">Certifications</span></a>
+      <a href="#research" class="mobile-nav-link" data-section="research"><span class="m-num">09</span><span class="m-lbl">Research</span></a>
+      <a href="#writeups" class="mobile-nav-link" data-section="writeups"><span class="m-num">10</span><span class="m-lbl">Write-ups</span></a>
+      <a href="#github" class="mobile-nav-link" data-section="github"><span class="m-num">11</span><span class="m-lbl">GitHub</span></a>
+      <a href="#system" class="mobile-nav-link" data-section="system"><span class="m-num">12</span><span class="m-lbl">System Status</span></a>
+      <a href="#about-site" class="mobile-nav-link" data-section="about-site"><span class="m-num">13</span><span class="m-lbl">About This Site</span></a>
+      <a href="#contact" class="mobile-nav-link" data-section="contact"><span class="m-num">14</span><span class="m-lbl">Contact</span></a>
     </nav>
-
-    <div class="sidebar-footer">
-      <div class="sidebar-status-meta">
-        <span class="status-indicator-dot"></span>
-        <span class="status-meta-text">ENV: PRODUCTION</span>
-      </div>
-      <div class="sidebar-shortcut-hint">
-        <kbd>Ctrl</kbd> + <kbd>K</kbd> Command Palette
-      </div>
+    <div class="mobile-drawer-footer">
+      <span class="status-dot online"></span>
+      <span>Cuddalore, Tamil Nadu, India • sukesh.me@gmail.com</span>
     </div>
-  </aside>
-
-  <!-- Mobile Backdrop -->
-  <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+  </div>
+  <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" aria-hidden="true"></div>
 
   <!-- Main Viewport Content Area -->
   <main class="os-main" id="main-content">

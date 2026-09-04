@@ -1,7 +1,7 @@
 /**
- * S//SECURITY OS — Main Application Entrypoint
- * Orchestrates 3D canvas, system telemetry, command palette, navigation,
- * cinema mode, accessibility, and real data rendering.
+ * S//SECURITY OS — 3D Web Application Controller
+ * Orchestrates 3D canvas, spatial scroll camera, 3D card tilt & reveal,
+ * top navigation spy, mobile drawer, command palette, and real data rendering.
  */
 
 import { PORTFOLIO_DATA } from './data/portfolioData.js';
@@ -12,14 +12,14 @@ import { initSystemMonitor } from './components/SystemMonitor.js';
 import { initGitHubFeed } from './components/GitHubFeed.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Render Social Icons
+  // 1. Render Verified Social Icons
   renderSocialIcons();
 
   // 2. Cinematic Intro Sequence
   setupCinematicIntro();
 
-  // 3. Initialize 3D Canvas Background
-  initThreeCanvas('bg-canvas');
+  // 3. Initialize 3D WebGL Background Universe
+  const threeCanvas = initThreeCanvas('bg-canvas');
 
   // 4. Initialize Command Palette (Ctrl+K / Cmd+K)
   const cmdPalette = initCommandPalette({
@@ -48,22 +48,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. Initialize GitHub Feed for @sukeshd-me
   initGitHubFeed('github-repos-container');
 
-  // 7. Navigation Spy & Smooth Scrolling
+  // 7. Top Navigation Spy & Smooth Scrolling
   setupNavigationSpy();
 
-  // 8. Cinema Mode
-  setupCinemaMode();
+  // 8. 3D Pallet/Card Scroll Reveals & Interactive 3D Tilt
+  setup3DScrollAndTilt();
 
-  // 9. Mobile Menu
+  // 9. Mobile Drawer Navigation
   setupMobileMenu();
 
-  // 10. Security Lab: Interactive SHA-256 Tool
+  // 10. Cinema Mode
+  setupCinemaMode();
+
+  // 11. Security Lab: Interactive SHA-256 Tool
   setupCryptoLab();
 
-  // 11. Skills Filter Tabs
+  // 12. Skills Filter Tabs
   setupSkillsFilter();
 
-  // 12. Copy Email Functionality
+  // 13. Copy Email Functionality
   setupCopyEmail();
 });
 
@@ -116,7 +119,7 @@ function setupCinematicIntro() {
   const dismissIntro = () => {
     if (isDismissed) return;
     isDismissed = true;
-    overlay.classList.add('dismissed');
+    overlay.classList.add('hidden');
     setTimeout(() => {
       overlay.style.display = 'none';
     }, 500);
@@ -126,24 +129,22 @@ function setupCinematicIntro() {
     skipBtn.addEventListener('click', dismissIntro);
   }
 
-  // Allow ESC to dismiss intro
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !isDismissed) {
       dismissIntro();
     }
   }, { once: true });
 
-  // Progress simulation (fast, elegant, non-blocking)
   let progress = 0;
   const messages = [
-    { at: 15, text: 'MOUNTING SECURITY ENGINE...' },
+    { at: 15, text: 'MOUNTING 3D CYBERNETIC UNIVERSE...' },
     { at: 45, text: 'INITIALIZING INTERFACE CORES...' },
     { at: 75, text: 'ESTABLISHING REAL DATA CHANNELS...' },
     { at: 95, text: 'SYSTEM READY.' }
   ];
 
   const interval = setInterval(() => {
-    progress += Math.floor(Math.random() * 18) + 12;
+    progress += Math.floor(Math.random() * 20) + 14;
     if (progress > 100) progress = 100;
 
     if (fill) fill.style.width = `${progress}%`;
@@ -155,23 +156,103 @@ function setupCinematicIntro() {
 
     if (progress >= 100) {
       clearInterval(interval);
-      setTimeout(dismissIntro, 250);
+      setTimeout(dismissIntro, 200);
     }
-  }, 90);
+  }, 80);
 }
 
 /**
- * Active navigation spy using IntersectionObserver
+ * 3D Pallet / Card Scroll Reveals & Interactive 3D Tilt Engine
+ */
+function setup3DScrollAndTilt() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 1. Scroll-triggered 3D entrance reveals
+  const sections = document.querySelectorAll('.section-container');
+  sections.forEach((section) => {
+    section.classList.add('reveal-3d');
+  });
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  sections.forEach((section) => revealObserver.observe(section));
+
+  // Trigger hero section immediately
+  const heroSection = document.getElementById('overview');
+  if (heroSection) {
+    heroSection.classList.add('revealed');
+  }
+
+  if (prefersReducedMotion) return;
+
+  // 2. Interactive 3D Card Hover Tilt with Specular Glare
+  const cards = document.querySelectorAll('.os-card');
+
+  cards.forEach((card) => {
+    // Inject specular glare element if absent
+    if (!card.querySelector('.card-glare')) {
+      const glare = document.createElement('div');
+      glare.className = 'card-glare';
+      glare.setAttribute('aria-hidden', 'true');
+      card.appendChild(glare);
+    }
+
+    let ticking = false;
+
+    card.addEventListener('mousemove', (e) => {
+      if (ticking) return;
+      ticking = true;
+
+      requestAnimationFrame(() => {
+        const rect = card.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        // Normalized offsets from center (-0.5 to 0.5)
+        const xOffset = mouseX / rect.width - 0.5;
+        const yOffset = mouseY / rect.height - 0.5;
+
+        // 3D rotation angles
+        const maxTilt = 8; // degrees
+        const rotateX = -yOffset * maxTilt;
+        const rotateY = xOffset * maxTilt;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(10px)`;
+        card.style.setProperty('--glare-x', `${(mouseX / rect.width * 100).toFixed(1)}%`);
+        card.style.setProperty('--glare-y', `${(mouseY / rect.height * 100).toFixed(1)}%`);
+
+        ticking = false;
+      });
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+    });
+  });
+}
+
+/**
+ * Active navigation spy for Top Navigation & Mobile Drawer
  */
 function setupNavigationSpy() {
   const sections = document.querySelectorAll('main > section');
-  const navLinks = document.querySelectorAll('.os-sidebar .nav-item');
+  const desktopLinks = document.querySelectorAll('.nav-links-desktop .top-nav-link');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-links .mobile-nav-link');
 
-  if (!sections.length || !navLinks.length) return;
+  if (!sections.length) return;
 
   const observerOptions = {
     root: null,
-    rootMargin: '-20% 0px -65% 0px',
+    rootMargin: '-25% 0px -60% 0px',
     threshold: 0
   };
 
@@ -179,7 +260,16 @@ function setupNavigationSpy() {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute('id');
-        navLinks.forEach((link) => {
+
+        desktopLinks.forEach((link) => {
+          if (link.getAttribute('data-section') === id) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+
+        mobileLinks.forEach((link) => {
           if (link.getAttribute('data-section') === id) {
             link.classList.add('active');
           } else {
@@ -204,7 +294,6 @@ function setupNavigationSpy() {
         targetEl.scrollIntoView({ behavior: 'smooth' });
         history.pushState(null, null, `#${targetId}`);
 
-        // Close mobile menu if open
         closeMobileMenu();
       }
     });
@@ -224,6 +313,55 @@ function navigateToSection(sectionId) {
 }
 
 /**
+ * Mobile Drawer Navigation Controls
+ */
+function setupMobileMenu() {
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const backdrop = document.getElementById('mobile-nav-backdrop');
+  const closeBtn = document.getElementById('mobile-drawer-close');
+
+  if (!menuBtn || !drawer || !backdrop) return;
+
+  menuBtn.addEventListener('click', () => {
+    const isOpen = drawer.classList.contains('open');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      drawer.classList.add('open');
+      backdrop.classList.add('active');
+      menuBtn.setAttribute('aria-expanded', 'true');
+      drawer.setAttribute('aria-hidden', 'false');
+    }
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeMobileMenu);
+  }
+
+  backdrop.addEventListener('click', closeMobileMenu);
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      closeMobileMenu();
+    }
+  });
+}
+
+function closeMobileMenu() {
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const backdrop = document.getElementById('mobile-nav-backdrop');
+  const menuBtn = document.getElementById('mobile-menu-btn');
+
+  if (drawer) {
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+  }
+  if (backdrop) backdrop.classList.remove('active');
+  if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+}
+
+/**
  * Cinema Mode Toggle & Exit
  */
 function setupCinemaMode() {
@@ -240,7 +378,6 @@ function setupCinemaMode() {
 
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && document.body.classList.contains('cinema-mode')) {
-      // Don't close cinema mode if command palette or modal is open
       const palette = document.querySelector('.cmd-palette-backdrop');
       if (!palette) {
         exitCinemaMode();
@@ -258,40 +395,6 @@ function toggleCinemaMode() {
 function exitCinemaMode() {
   document.body.classList.remove('cinema-mode');
   showToast('Exited Cinema Mode');
-}
-
-/**
- * Mobile Navigation Drawer Controls
- */
-function setupMobileMenu() {
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const sidebar = document.getElementById('os-sidebar');
-  const backdrop = document.getElementById('sidebar-backdrop');
-
-  if (!menuBtn || !sidebar || !backdrop) return;
-
-  menuBtn.addEventListener('click', () => {
-    const isOpen = sidebar.classList.contains('mobile-open');
-    if (isOpen) {
-      closeMobileMenu();
-    } else {
-      sidebar.classList.add('mobile-open');
-      backdrop.classList.add('active');
-      menuBtn.setAttribute('aria-expanded', 'true');
-    }
-  });
-
-  backdrop.addEventListener('click', closeMobileMenu);
-}
-
-function closeMobileMenu() {
-  const sidebar = document.getElementById('os-sidebar');
-  const backdrop = document.getElementById('sidebar-backdrop');
-  const menuBtn = document.getElementById('mobile-menu-btn');
-
-  if (sidebar) sidebar.classList.remove('mobile-open');
-  if (backdrop) backdrop.classList.remove('active');
-  if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
 }
 
 /**
@@ -381,7 +484,6 @@ function setupCopyEmail() {
         if (copyText) copyText.textContent = 'Copy Email';
       }, 2500);
     } catch (err) {
-      // Fallback for older browsers
       showToast(`Email: ${email}`);
     }
   });
@@ -404,7 +506,6 @@ export function showToast(message, duration = 3000) {
 
   container.appendChild(toast);
 
-  // Trigger entrance animation
   requestAnimationFrame(() => {
     toast.classList.add('visible');
   });

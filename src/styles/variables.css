@@ -63,14 +63,12 @@
   --radius-full: 9999px;
 
   /* Layout Measurements */
-  --sidebar-width: 280px;
-  --sidebar-collapsed-width: 80px;
-  --topbar-height: 60px;
-  --content-max-width: 1200px;
+  --topbar-height: 68px;
+  --content-max-width: 1240px;
   --z-canvas: 0;
   --z-content: 10;
-  --z-sidebar: 30;
-  --z-topbar: 40;
+  --z-topbar: 50;
+  --z-drawer: 80;
   --z-palette: 100;
   --z-intro: 200;
 
@@ -82,6 +80,5 @@
 
 /* Cinema Mode adjustments */
 body.cinema-mode {
-  --sidebar-width: 0px;
   --content-max-width: 1440px;
 }
