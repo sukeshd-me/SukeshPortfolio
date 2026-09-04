@@ -162,39 +162,54 @@ function setupCinematicIntro() {
 }
 
 /**
- * 3D Pallet / Card Scroll Reveals & Interactive 3D Tilt Engine
+ * 3D Pallet / Box Scroll Reveals & Interactive 3D Tilt Engine
+ * Animates pallets and boxes from left, right, and bottom into their actual place on every scroll.
  */
 function setup3DScrollAndTilt() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // 1. Scroll-triggered 3D entrance reveals
-  const sections = document.querySelectorAll('.section-container');
-  sections.forEach((section) => {
-    section.classList.add('reveal-3d');
-  });
+  // 1. Assign directional 3D reveal classes to all pallets, cards, and section blocks
+  assignDirectionalClasses();
 
-  const revealObserver = new IntersectionObserver((entries, observer) => {
+  const revealElements = document.querySelectorAll(
+    '.reveal-left, .reveal-right, .reveal-bottom, .reveal-3d'
+  );
+
+  // 2. IntersectionObserver for every-scroll 3D entrance animations
+  const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
+      const el = entry.target;
       if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
+        el.classList.add('revealed');
+      } else {
+        // When element has completely scrolled off-screen (above or below), remove 'revealed'
+        // so on every scroll back into view, it animates from left/right/bottom into its actual place!
+        const rect = entry.boundingClientRect;
+        if (rect.top > window.innerHeight || rect.bottom < 0) {
+          el.classList.remove('revealed');
+        }
       }
     });
   }, {
     threshold: 0.08,
-    rootMargin: '0px 0px -40px 0px'
+    rootMargin: '20px 0px -40px 0px'
   });
 
-  sections.forEach((section) => revealObserver.observe(section));
+  revealElements.forEach((el) => revealObserver.observe(el));
 
-  // Trigger hero section immediately
-  const heroSection = document.getElementById('overview');
-  if (heroSection) {
-    heroSection.classList.add('revealed');
+  // Trigger initial hero elements immediately on load if at top of page
+  if (window.scrollY < 120) {
+    const heroElements = document.querySelectorAll('#overview .reveal-left, #overview .reveal-right, #overview .reveal-bottom');
+    heroElements.forEach((el, idx) => {
+      setTimeout(() => {
+        el.classList.add('revealed');
+      }, idx * 100);
+    });
   }
 
   if (prefersReducedMotion) return;
 
-  // 2. Interactive 3D Card Hover Tilt with Specular Glare
+  // 3. Interactive 3D Card Hover Tilt with Dynamic Specular Glare
   const cards = document.querySelectorAll('.os-card');
 
   cards.forEach((card) => {
@@ -222,21 +237,145 @@ function setup3DScrollAndTilt() {
         const yOffset = mouseY / rect.height - 0.5;
 
         // 3D rotation angles
-        const maxTilt = 8; // degrees
+        const maxTilt = 9; // degrees
         const rotateX = -yOffset * maxTilt;
         const rotateY = xOffset * maxTilt;
 
-        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(10px)`;
-        card.style.setProperty('--glare-x', `${(mouseX / rect.width * 100).toFixed(1)}%`);
-        card.style.setProperty('--glare-y', `${(mouseY / rect.height * 100).toFixed(1)}%`);
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(12px)`;
+        card.style.setProperty('--glare-x', `${((mouseX / rect.width) * 100).toFixed(1)}%`);
+        card.style.setProperty('--glare-y', `${((mouseY / rect.height) * 100).toFixed(1)}%`);
 
         ticking = false;
       });
     });
 
     card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+      // Clear inline transform to allow resting .revealed CSS transform to restore cleanly
+      card.style.transform = '';
     });
+  });
+}
+
+/**
+ * Automatically inspects the DOM and tags all pallets, boxes, and headers
+ * with the appropriate directional 3D class (reveal-left, reveal-right, or reveal-bottom)
+ */
+function assignDirectionalClasses() {
+  // Hero section
+  const heroText = document.querySelector('.hero-text-block');
+  const heroCard = document.querySelector('.hero-profile-card');
+  if (heroText && !heroText.classList.contains('reveal-left')) heroText.classList.add('reveal-left');
+  if (heroCard && !heroCard.classList.contains('reveal-right')) heroCard.classList.add('reveal-right');
+
+  // Section headers & eyebrows always glide up from bottom
+  document.querySelectorAll('.section-header-block, .section-eyebrow').forEach((el) => {
+    if (!el.classList.contains('reveal-bottom')) el.classList.add('reveal-bottom');
+  });
+
+  // About section: main card from left, pillars from right with stagger
+  const aboutMain = document.querySelector('.about-main-card');
+  if (aboutMain && !aboutMain.classList.contains('reveal-left')) aboutMain.classList.add('reveal-left');
+
+  const pillars = document.querySelectorAll('.pillar-card');
+  pillars.forEach((pillar, i) => {
+    if (!pillar.classList.contains('reveal-right')) {
+      pillar.classList.add('reveal-right', `delay-${(i % 4) + 1}`);
+    }
+  });
+
+  // Developer ecosystem: 5 steps (left -> left -> bottom -> right -> right)
+  const ecoCards = document.querySelectorAll('.ecosystem-card');
+  ecoCards.forEach((card, i) => {
+    if (i < 2) {
+      card.classList.add('reveal-left', `delay-${i + 1}`);
+    } else if (i === 2) {
+      card.classList.add('reveal-bottom', 'delay-2');
+    } else {
+      card.classList.add('reveal-right', `delay-${i}`);
+    }
+  });
+
+  // Cybersecurity focus cards (2-column grid: alternating left and right)
+  const cyberCards = document.querySelectorAll('.cyber-focus-card');
+  cyberCards.forEach((card, i) => {
+    if (i % 2 === 0) {
+      card.classList.add('reveal-left', `delay-${(i % 3) + 1}`);
+    } else {
+      card.classList.add('reveal-right', `delay-${(i % 3) + 1}`);
+    }
+  });
+
+  // Skills matrix cards: 3 columns (left, bottom, right)
+  const skillCards = document.querySelectorAll('.skill-card');
+  skillCards.forEach((card, i) => {
+    const col = i % 3;
+    if (col === 0) card.classList.add('reveal-left', `delay-${(i % 3) + 1}`);
+    else if (col === 1) card.classList.add('reveal-bottom', `delay-${(i % 3) + 1}`);
+    else card.classList.add('reveal-right', `delay-${(i % 3) + 1}`);
+  });
+
+  const skillsFilterBar = document.querySelector('.skills-filter-bar');
+  if (skillsFilterBar && !skillsFilterBar.classList.contains('reveal-bottom')) {
+    skillsFilterBar.classList.add('reveal-bottom');
+  }
+
+  // Project cards
+  const projectCards = document.querySelectorAll('.project-module-card');
+  projectCards.forEach((card) => {
+    if (!card.classList.contains('reveal-bottom')) card.classList.add('reveal-bottom');
+  });
+
+  // Security Lab cards (3 tools: left, bottom, right)
+  const labCards = document.querySelectorAll('.lab-card');
+  labCards.forEach((card, i) => {
+    if (i === 0) card.classList.add('reveal-left');
+    else if (i === 1) card.classList.add('reveal-bottom', 'delay-2');
+    else card.classList.add('reveal-right', 'delay-3');
+  });
+
+  // Certifications cards (2 cards: left, right)
+  const certCards = document.querySelectorAll('.cert-card');
+  certCards.forEach((card, i) => {
+    if (i % 2 === 0) card.classList.add('reveal-left', 'delay-1');
+    else card.classList.add('reveal-right', 'delay-2');
+  });
+
+  // Empty state cards (Research, Write-ups)
+  document.querySelectorAll('.empty-state-card').forEach((card) => {
+    if (!card.classList.contains('reveal-bottom')) card.classList.add('reveal-bottom');
+  });
+
+  // GitHub container & repo cards
+  const ghCard = document.querySelector('.github-container-card');
+  if (ghCard && !ghCard.classList.contains('reveal-bottom')) ghCard.classList.add('reveal-bottom');
+
+  // Contact section: main contact on left, socials on right
+  const contactMain = document.querySelector('.contact-main-card');
+  const socialsHub = document.querySelector('.socials-hub-card');
+  if (contactMain && !contactMain.classList.contains('reveal-left')) contactMain.classList.add('reveal-left');
+  if (socialsHub && !socialsHub.classList.contains('reveal-right')) socialsHub.classList.add('reveal-right');
+
+  // System status card
+  const sysCard = document.querySelector('.system-status-card');
+  if (sysCard && !sysCard.classList.contains('reveal-bottom')) sysCard.classList.add('reveal-bottom');
+
+  // Site specs cards (2 cards: left, right)
+  const specCards = document.querySelectorAll('.spec-card');
+  specCards.forEach((card, i) => {
+    if (i % 2 === 0) card.classList.add('reveal-left', 'delay-1');
+    else card.classList.add('reveal-right', 'delay-2');
+  });
+
+  // Universal catch-all for any other .os-card or .truth-banner
+  document.querySelectorAll('.os-card, .truth-banner').forEach((card) => {
+    if (
+      !card.classList.contains('reveal-left') &&
+      !card.classList.contains('reveal-right') &&
+      !card.classList.contains('reveal-bottom') &&
+      !card.classList.contains('reveal-3d')
+    ) {
+      card.classList.add('reveal-bottom');
+    }
   });
 }
 
