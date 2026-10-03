@@ -68,6 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 13. Copy Email Functionality
   setupCopyEmail();
+
+  // 14. Google Developer Verification Link Copy
+  setupGoogleDevVerification();
 });
 
 /**
@@ -75,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 function renderSocialIcons() {
   const iconMappings = [
+    { id: 'icon-google', iconName: 'google' },
     { id: 'icon-github', iconName: 'github' },
     { id: 'icon-x', iconName: 'x' },
     { id: 'icon-instagram', iconName: 'instagram' },
@@ -624,6 +628,30 @@ function setupCopyEmail() {
       }, 2500);
     } catch (err) {
       showToast(`Email: ${email}`);
+    }
+  });
+}
+
+/**
+ * Copy Google Developer Verifiable Profile Link
+ */
+function setupGoogleDevVerification() {
+  const copyBtn = document.getElementById('btn-copy-gdev');
+  const copyText = document.getElementById('copy-gdev-text');
+
+  if (!copyBtn) return;
+
+  copyBtn.addEventListener('click', async () => {
+    const url = 'https://g.dev/sukeshdeveloper';
+    try {
+      await navigator.clipboard.writeText(url);
+      if (copyText) copyText.textContent = 'Copied Link!';
+      showToast('Copied: g.dev/sukeshdeveloper');
+      setTimeout(() => {
+        if (copyText) copyText.textContent = 'Copy Verifiable Link';
+      }, 2500);
+    } catch (err) {
+      showToast('Verified profile: https://g.dev/sukeshdeveloper');
     }
   });
 }

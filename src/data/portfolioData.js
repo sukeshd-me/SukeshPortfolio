@@ -9,15 +9,31 @@ export const PORTFOLIO_DATA = {
     name: 'Sukesh D',
     monogram: 'S',
     brandTag: 'S//SECURITY OS',
-    primaryTitle: 'Aspiring Cybersecurity Professional',
-    role: 'Developer × Cybersecurity',
+    primaryTitle: 'Developer at Google & Aspiring Cybersecurity Professional',
+    role: 'Developer at Google × Cybersecurity',
     location: 'Cuddalore, Tamil Nadu, India',
     locationShort: 'Cuddalore, IN',
     email: 'sukesh.me@gmail.com',
     domain: 'https://www.sukeshportfolio.com',
     heroTagline: 'Building software, exploring cybersecurity, and learning how systems can be made safer.',
-    aboutBrief: 'Sukesh D is an aspiring cybersecurity professional and developer from Cuddalore, Tamil Nadu, interested in cybersecurity, ethical hacking, web security, security engineering, programming, and building security-focused software.',
+    aboutBrief: 'Sukesh D is officially selected as a developer at Google (October 2) with a verifiable profile at g.dev/sukeshdeveloper, and an aspiring cybersecurity professional from Cuddalore, Tamil Nadu.',
+    googleDeveloper: {
+      role: 'Developer at Google',
+      status: 'Officially Selected Developer',
+      date: 'October 2',
+      url: 'https://g.dev/sukeshdeveloper',
+      directory: 'g.dev/sukeshdeveloper'
+    },
     seoKeywords: [
+      'is sukesh d google developer?',
+      'sukesh google developer?',
+      'is sukesh a google developer',
+      'sukesh d google developer',
+      'sukesh google developer',
+      'sukesh d developer at google',
+      'sukesh google developer october 2',
+      'g.dev/sukeshdeveloper',
+      'sukesh d g dev',
       'Sukesh D',
       'Who is Sukesh D',
       'Who is Sukesh',
@@ -33,6 +49,7 @@ export const PORTFOLIO_DATA = {
 
   navigation: [
     { id: 'overview', num: '01', label: 'Overview', icon: 'shield' },
+    { id: 'google-developer', num: '★', label: 'Google Developer', icon: 'award' },
     { id: 'about', num: '02', label: 'About', icon: 'user' },
     { id: 'developer', num: '03', label: 'Developer', icon: 'code' },
     { id: 'cybersecurity', num: '04', label: 'Cybersecurity', icon: 'lock' },
@@ -49,6 +66,13 @@ export const PORTFOLIO_DATA = {
   ],
 
   socials: [
+    {
+      platform: 'Google Developer',
+      handle: 'g.dev/sukeshdeveloper',
+      url: 'https://g.dev/sukeshdeveloper',
+      ariaLabel: 'Sukesh D Verified Google Developer Profile',
+      icon: 'google'
+    },
     {
       platform: 'GitHub',
       handle: '@sukeshd-me',

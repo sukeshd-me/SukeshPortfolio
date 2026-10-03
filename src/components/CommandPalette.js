@@ -13,6 +13,8 @@ export class CommandPalette {
     
     this.commands = [
       { id: 'nav-overview', title: 'Open Overview', category: 'Navigation', shortcut: '01', action: () => this.scrollTo('overview') },
+      { id: 'nav-google-dev', title: 'Open Google Developer Verification (October 2)', category: 'Navigation', shortcut: 'GD', action: () => this.scrollTo('google-developer') },
+      { id: 'act-verify-gdev', title: 'Verify on Google Developers (g.dev/sukeshdeveloper)', category: 'Credentials', shortcut: 'Link', action: () => window.open('https://g.dev/sukeshdeveloper', '_blank', 'noopener,noreferrer') },
       { id: 'nav-about', title: 'Open About (Who is Sukesh D?)', category: 'Navigation', shortcut: '02', action: () => this.scrollTo('about') },
       { id: 'nav-developer', title: 'Open Developer Section', category: 'Navigation', shortcut: '03', action: () => this.scrollTo('developer') },
       { id: 'nav-cybersecurity', title: 'Open Cybersecurity Operations', category: 'Navigation', shortcut: '04', action: () => this.scrollTo('cybersecurity') },

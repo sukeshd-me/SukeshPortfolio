@@ -16,8 +16,9 @@
 ### Core Identity & Verification
 - **Name**: Sukesh D
 - **Visual Monogram**: `S`
-- **Primary Title**: Aspiring Cybersecurity Professional
+- **Primary Title**: Developer at Google & Aspiring Cybersecurity Professional
 - **Professional Identity**: Developer × Cybersecurity
+- **Google Developer Profile**: [`g.dev/sukeshdeveloper`](https://g.dev/sukeshdeveloper) (Officially Selected: October 2)
 - **Location**: Cuddalore, Tamil Nadu, India
 - **Contact Email**: [sukesh.me@gmail.com](mailto:sukesh.me@gmail.com)
 - **Production URL**: `https://www.sukeshportfolio.com`
@@ -30,19 +31,20 @@
 - **Operating System Desktop Shell**: Fixed top status bar displaying UTC live time, edge network latency, cinema mode toggle, and command palette trigger.
 - **Unified 14-Module Architecture**:
   1. `01 Overview`: Hero interface, quick launch actions, and core professional summary.
-  2. `02 About`: Contextual professional background answering *"Who is Sukesh D?"* with authenticity.
-  3. `03 Developer`: Technical ecosystem map across programming, systems, networking, and security.
-  4. `04 Cybersecurity`: Defense domains, methodology, and ethical security focus areas.
-  5. `05 Skills`: Categorized knowledge base partitioned into *Working Knowledge*, *Learning*, and *Exploring*.
-  6. `06 Project Explorer`: Deep dive into active software engineering projects, starring **SentinelScan** (File Safety & Malware Analysis Platform).
-  7. `07 Security Lab`: Real browser-based defensive security tools, including an interactive client-side Web Crypto SHA-256 hash generator.
-  8. `08 Certifications`: Strict factual display of ongoing credentials (CompTIA Security+ SY0-701 — *In Progress*).
-  9. `09 Research`: Forthcoming vulnerability notes and study areas.
-  10. `10 Write-ups`: Technical documentation and engineering logs repository.
-  11. `11 GitHub Feed`: Live public GitHub API integration with resilient offline/fallback states.
-  12. `12 Contact`: Direct verified touchpoints, secure email clipboard tool, and location details.
-  13. `13 System`: Live edge runtime diagnostics, ping checks, and infrastructure status.
-  14. `14 About This Site`: Open-source design system credits and architectural disclosure.
+  2. `Google Developer`: Official verification showcase for selection as Developer at Google on October 2 (`g.dev/sukeshdeveloper`).
+  3. `02 About`: Contextual professional background answering *"Who is Sukesh D?"* with authenticity.
+  4. `03 Developer`: Technical ecosystem map across programming, systems, networking, and security.
+  5. `04 Cybersecurity`: Defense domains, methodology, and ethical security focus areas.
+  6. `05 Skills`: Categorized knowledge base partitioned into *Working Knowledge*, *Learning*, and *Exploring*.
+  7. `06 Project Explorer`: Deep dive into active software engineering projects, starring **SentinelScan** (File Safety & Malware Analysis Platform).
+  8. `07 Security Lab`: Real browser-based defensive security tools, including an interactive client-side Web Crypto SHA-256 hash generator.
+  9. `08 Certifications`: Strict factual display of ongoing credentials (CompTIA Security+ SY0-701 — *In Progress*).
+  10. `09 Research`: Forthcoming vulnerability notes and study areas.
+  11. `10 Write-ups`: Technical documentation and engineering logs repository.
+  12. `11 GitHub Feed`: Live public GitHub API integration with resilient offline/fallback states.
+  13. `12 Contact`: Direct verified touchpoints, secure email clipboard tool, and location details.
+  14. `13 System`: Live edge runtime diagnostics, ping checks, and infrastructure status.
+  15. `14 About This Site`: Open-source design system credits and architectural disclosure.
 - **Professional Command Palette (`Ctrl+K` / `Cmd+K`)**: Rapid keyboard-first navigation and system actions with fuzzy filtering and arrow key support.
 - **Cinema Mode**: One-click immersive storytelling view expanding typography and visual focus.
 - **Hardware-Accelerated 3D Mesh**: High-performance Three.js background with DPR clamping, window resize handling, visibility change pausing, and fallback for low-power devices.
@@ -50,12 +52,13 @@
 
 ---
 
-## Confirmed Social Profiles
+## Confirmed Profiles & Verification
 
-All social links on this portfolio correspond to verified public handles:
+All profiles and verification links on this portfolio correspond to verified public handles:
 
 | Platform | Handle / Profile URL | Status |
 | :--- | :--- | :--- |
+| **Google Developer** | [`g.dev/sukeshdeveloper`](https://g.dev/sukeshdeveloper) | Officially Selected (Oct 2) |
 | **GitHub** | [`@sukeshd-me`](https://github.com/sukeshd-me) | Confirmed |
 | **X (Twitter)** | [`@sukeshd_me`](https://x.com/sukeshd_me) | Confirmed |
 | **YouTube** | [`@sukeshd_me`](https://youtube.com/@sukeshd_me) | Confirmed |
